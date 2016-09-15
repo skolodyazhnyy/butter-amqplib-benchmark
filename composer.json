@@ -1,0 +1,17 @@
+{
+    "name": "skolodyazhnyy/butter-amqplib-benchmark",
+    "description": "Benchmark Application for Butter AMQP library",
+    "type": "project",
+    "require": {
+        "php-amqplib/php-amqplib": "^2.6",
+        "skolodyazhnyy/butter-amqplib": "dev-master"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sergey Kolodyazhnyy",
+            "email": "sergey.kolodyazhnyy@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}
