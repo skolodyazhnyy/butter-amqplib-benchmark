@@ -9,11 +9,11 @@ if ($argc < 3) {
 
 list($cmd, $url, $queue, $messages, $token) = $argv;
 
-$token = uniqid();
-
 require_once __DIR__.'/../vendor/autoload.php';
 
 $url = \ButterAMQP\Url::parse($url);
+
+$start = microtime(true);
 
 $connection = new \PhpAmqpLib\Connection\AMQPStreamConnection(
     $url->getHost(),
@@ -43,3 +43,9 @@ while (count($channel->callbacks)) {
 
 $channel->close();
 $connection->close();
+
+echo 'PHPAMQPLib:'.PHP_EOL;
+echo ' - ' . number_format(microtime(true) - $start, 5, '.', ''). ' seconds'.PHP_EOL;
+echo ' - ' . $messages.' messages not processed'.PHP_EOL;
+echo ' - ' . memory_get_peak_usage().' memory usage peak'.PHP_EOL;
+echo PHP_EOL;
