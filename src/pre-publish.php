@@ -9,8 +9,6 @@ if ($argc < 4) {
 
 list($cmd, $url, $queue, $messages, $size, $token) = $argv;
 
-$token = uniqid();
-
 require_once __DIR__.'/../vendor/autoload.php';
 
 $connection = \ButterAMQP\ConnectionBuilder::make()
