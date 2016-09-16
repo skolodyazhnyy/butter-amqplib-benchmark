@@ -35,13 +35,14 @@ php -dmemory_limit=-1 src/publish-butteramqp.php $AMQP_URL $QUEUE $COUNT $SIZE $
 echo "100 messages, 10MB each"
 
 AMQP_URL=amqp://guest:guest@localhost/?heartbeat=100\&timeout=1
-COUNT=1
+COUNT=100
 SIZE=10000000
 QUEUE=publish-test
 TOKEN=test
 
-php -dmemory_limit=-1 src/purge.php $AMQP_URL $QUEUE
-php -dmemory_limit=-1 src/publish-phpamqplib.php $AMQP_URL $QUEUE $COUNT $SIZE $TOKEN
+# Too slow?!
+#php -dmemory_limit=-1 src/purge.php $AMQP_URL $QUEUE
+#php -dmemory_limit=-1 src/publish-phpamqplib.php $AMQP_URL $QUEUE $COUNT $SIZE $TOKEN
 
 php -dmemory_limit=-1 src/purge.php $AMQP_URL $QUEUE
 php -dmemory_limit=-1 src/publish-bunny.php $AMQP_URL $QUEUE $COUNT $SIZE $TOKEN
